@@ -39,4 +39,23 @@ router.post("/posts/:_id/comments", async (req, res) => {
   res.json({ comments: "댓글 작성이 완료되었습니다." });
 });
 
+// 댓글 수정 API
+router.put("/posts/:_id/comments/:_commentid", async (req, res) => {
+  const { _commentId: _id } = req.params;
+  const { password, content } = req.body;
+
+  try {
+    const comments = await Comments.findOne({ _commentId, password });
+    if (!comments) {
+      return res
+        .status(404)
+        .json({ error: "해당하는 댓글을 찾을 수 없습니다" });
+    }
+    await Comments.updateOne({ _commentId, password }, { $set: { content } });
+    res.json({ data: "댓글 수정에 성공했습니다." });
+  } catch (error) {
+    res.status(500).json({ error: "댓글 수정에 실패했습니다." });
+  }
+});
+
 module.exports = router;
