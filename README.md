@@ -1,4 +1,3 @@
-
 ```
 nodeSoloProj
 ├─ app.js
@@ -6,7 +5,6 @@ nodeSoloProj
 ├─ package.json
 ├─ routes
 │  ├─ comments.js
-│  ├─ index.js
 │  └─ post.js
 └─ schemas
    ├─ comments.js
