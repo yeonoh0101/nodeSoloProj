@@ -43,7 +43,7 @@ router.post("/posts/:_id/comments", async (req, res) => {
 
 // 댓글 수정 API
 router.put("/posts/:_id/comments/:_commentid", async (req, res) => {
-  const { _commentId: _id } = req.params;
+  const { _commentId } = req.params;
   const { password, content } = req.body;
 
   try {
